@@ -13,6 +13,7 @@ module Phase5
       @params = {}
 
       @params.merge! route_params
+
       if req.query_string
         @params.merge!(parse_www_encoded_form(req.query_string))
       end
@@ -24,7 +25,7 @@ module Phase5
     end
 
     def [](key)
-      @params[key]
+      @params[key.to_s]
     end
 
     def to_s
